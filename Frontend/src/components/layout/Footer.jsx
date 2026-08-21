@@ -6,7 +6,7 @@ export default function Footer() {
     return (
         <footer className="footer">
             <p className="footer-text">
-                &copy; {year} TaskFlow — Built with the MERN Stack
+                &copy; {year} TaskManager — Built with the MERN Stack
             </p>
         </footer>
     );

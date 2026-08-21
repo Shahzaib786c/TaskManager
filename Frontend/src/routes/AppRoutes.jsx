@@ -7,6 +7,7 @@ import Home from "../pages/Home.jsx";
 import Login from "../pages/Login.jsx";
 import Register from "../pages/Register.jsx";
 import NotFound from "../pages/NotFound.jsx";
+import Profile from "../pages/Profile.jsx";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,13 @@ const router = createBrowserRouter([
         element: <MainLayout />,
         children: [{ path: "/", element: <Home /> }],
       },
+    ],
+  },
+  {
+    element: <MainLayout />,
+    children: [
+      { path: "/", element: <Home /> },
+      { path: "/profile", element: <Profile /> },
     ],
   },
   { path: "*", element: <NotFound /> },

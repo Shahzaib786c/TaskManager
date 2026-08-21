@@ -4,6 +4,7 @@ import * as yup from "yup";
 import { Link, useNavigate } from "react-router";
 import { useAuth } from "../hooks/useAuth.js";
 import "./Auth.css";
+import toast from "react-hot-toast";
 
 const schema = yup.object({
   name: yup.string().required("Name is required"),
@@ -28,9 +29,10 @@ export default function Register() {
   async function onSubmit(data) {
     try {
       await registerUser(data);
+      toast.success("Registration successful — please login");
       navigate("/login");
     } catch (error) {
-      alert(error.response?.data?.message || "Registration failed");
+      toast.error(error.response?.data?.message || "Registration failed");
     }
   }
 

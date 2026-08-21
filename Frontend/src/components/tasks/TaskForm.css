@@ -1,0 +1,97 @@
+.task-form-group {
+    margin-bottom: var(--space-md);
+}
+
+.task-form-row {
+    display: flex;
+    gap: var(--space-md);
+}
+
+.task-form-row .task-form-group {
+    flex: 1;
+}
+
+.task-form-label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: var(--space-xs);
+}
+
+.task-form-input,
+.task-form-textarea,
+.task-form-select {
+    width: 100%;
+    padding: var(--space-sm) var(--space-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.15s ease;
+    background-color: var(--color-surface);
+    color: var(--color-text);
+}
+
+.task-form-textarea {
+    resize: vertical;
+}
+
+.task-form-input:focus,
+.task-form-textarea:focus,
+.task-form-select:focus {
+    border-color: var(--color-primary);
+}
+
+.task-form-error {
+    color: var(--color-danger);
+    font-size: 0.78rem;
+    margin-top: var(--space-xs);
+}
+
+.task-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-sm);
+    margin-top: var(--space-lg);
+}
+
+.task-form-cancel-btn {
+    padding: var(--space-sm) var(--space-lg);
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: 1px solid var(--color-border);
+    background-color: transparent;
+    color: var(--color-text);
+}
+
+.task-form-cancel-btn:hover {
+    background-color: var(--color-bg);
+}
+
+.task-form-submit-btn {
+    padding: var(--space-sm) var(--space-lg);
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    font-weight: 600;
+    background-color: var(--color-primary);
+    color: #fff;
+}
+
+.task-form-submit-btn:hover:not(:disabled) {
+    background-color: var(--color-primary-dark);
+}
+
+.task-form-submit-btn:disabled,
+.task-form-cancel-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+@media (max-width: 480px) {
+    .task-form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}

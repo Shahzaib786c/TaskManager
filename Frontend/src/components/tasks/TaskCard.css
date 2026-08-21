@@ -1,0 +1,111 @@
+.task-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.15s ease;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.task-card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.task-card-completed {
+    opacity: 0.7;
+}
+
+.task-card-completed .task-card-title {
+    text-decoration: line-through;
+    color: var(--color-text-muted);
+}
+
+.task-card-top {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-sm);
+}
+
+.task-card-checkbox {
+    margin-top: 4px;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--color-accent);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.task-card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    word-break: break-word;
+}
+
+.task-card-description {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    word-break: break-word;
+}
+
+.task-card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.task-card-priority {
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.task-card-priority-low {
+    color: var(--color-text-muted);
+}
+
+.task-card-priority-medium {
+    color: var(--color-warning);
+}
+
+.task-card-priority-high {
+    color: var(--color-danger);
+}
+
+.task-card-due-date {
+    font-size: 0.75rem;
+    color: var(--color-text-light);
+}
+
+.task-card-actions {
+    display: flex;
+    gap: var(--space-sm);
+    margin-top: var(--space-xs);
+}
+
+.task-card-edit-btn,
+.task-card-delete-btn {
+    flex: 1;
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid var(--color-border);
+    background-color: transparent;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.task-card-edit-btn:hover {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #fff;
+}
+
+.task-card-delete-btn:hover {
+    background-color: var(--color-danger);
+    border-color: var(--color-danger);
+    color: #fff;
+}
