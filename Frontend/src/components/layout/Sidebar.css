@@ -5,9 +5,10 @@
     display: flex;
     flex-direction: column;
     padding: var(--space-lg) var(--space-md);
-    height: 100vh;
+    height: 100dvh;
     position: sticky;
     top: 0;
+    overflow-y: auto;
 }
 
 .sidebar-logo {
