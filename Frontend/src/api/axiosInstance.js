@@ -2,9 +2,7 @@ import axios from "axios";
 import { getToken, removeToken } from "../utils/storage.js";
 
 const axiosInstance = axios.create({
-    // baseURL: import.meta.env.VITE_API_BASE_URL
-    baseURL: "https://taskmanager-q7au.onrender.com/api"
-
+    baseURL: import.meta.env.VITE_API_BASE_URL
 });
 
 axiosInstance.interceptors.request.use((config) => {
