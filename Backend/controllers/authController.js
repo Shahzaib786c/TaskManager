@@ -82,3 +82,76 @@ export async function getMe(req, res) {
         res.status(500).json({ message: error.message });
     }
 }
+
+export async function updateAvatar(req, res) {
+    try {
+        if (!req.file) {
+            return res.status(400).json({
+                message: "Avatar image is required"
+            });
+        }
+
+        const user = await userModel.findByIdAndUpdate(
+            req.userId,
+            { avatar: req.file.path },
+            {
+                returnDocument: 'after',
+                runValidators: true
+            }
+        );
+
+        if (!user) {
+            return res.status(404).json({
+                message: "User not found"
+            });
+        }
+
+        res.status(200).json({
+            message: "Avatar updated successfully",
+            user: { id: user._id, name: user.name, email: user.email, avatar: user.avatar }
+        });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
+
+export async function updateProfile(req, res) {
+    try {
+        const { name, email } = req.body;
+
+        if (!name || !email) {
+            return res.status(400).json({
+                message: "Name and email are required"
+            });
+        }
+
+        const existingUser = await userModel.findOne({ email, _id: { $ne: req.userId } });
+        if (existingUser) {
+            return res.status(400).json({
+                message: "Email already in use by another account"
+            });
+        }
+
+        const user = await userModel.findByIdAndUpdate(
+            req.userId,
+            { name, email },
+            {
+                returnDocument: 'after',
+                runValidators: true
+            }
+        );
+
+        if (!user) {
+            return res.status(404).json({
+                message: "User not found"
+            });
+        }
+
+        res.status(200).json({
+            message: "Profile updated successfully",
+            user: { id: user._id, name: user.name, email: user.email, avatar: user.avatar }
+        });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}

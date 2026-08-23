@@ -1,0 +1,67 @@
+.avatar-cropper-area {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    background-color: #333;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+}
+
+.avatar-cropper-zoom-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+}
+
+.avatar-cropper-zoom-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text);
+    white-space: nowrap;
+}
+
+.avatar-cropper-zoom-slider {
+    flex: 1;
+    accent-color: var(--color-primary);
+}
+
+.avatar-cropper-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-sm);
+    margin-top: var(--space-lg);
+}
+
+.avatar-cropper-cancel-btn {
+    padding: var(--space-sm) var(--space-lg);
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: 1px solid var(--color-border);
+    background-color: transparent;
+    color: var(--color-text);
+}
+
+.avatar-cropper-cancel-btn:hover:not(:disabled) {
+    background-color: var(--color-bg);
+}
+
+.avatar-cropper-save-btn {
+    padding: var(--space-sm) var(--space-lg);
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    font-weight: 600;
+    background-color: var(--color-primary);
+    color: #fff;
+}
+
+.avatar-cropper-save-btn:hover:not(:disabled) {
+    background-color: var(--color-primary-dark);
+}
+
+.avatar-cropper-cancel-btn:disabled,
+.avatar-cropper-save-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}

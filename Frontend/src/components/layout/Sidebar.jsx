@@ -1,6 +1,7 @@
 import { NavLink, useNavigate } from "react-router";
 import { useAuth } from "../../hooks/useAuth.js";
 import "./Sidebar.css";
+import { getAvatarUrl } from "../../utils/constants.js";
 
 export default function Sidebar({ isOpen, onClose }) {
   const { user, logout } = useAuth();
@@ -24,7 +25,11 @@ export default function Sidebar({ isOpen, onClose }) {
 
         <div className="sidebar-user">
           <div className="sidebar-user-avatar">
-            {user?.name?.charAt(0).toUpperCase()}
+            {getAvatarUrl(user?.avatar) ? (
+              <img src={getAvatarUrl(user?.avatar)} alt="Profile" className="sidebar-user-avatar-img" />
+            ) : (
+              user?.name?.charAt(0).toUpperCase()
+            )}
           </div>
           <span className="sidebar-user-name">{user?.name}</span>
         </div>
