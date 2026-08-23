@@ -42,6 +42,29 @@
 // export default uploadAvatar;
 
 
+// import multer from "multer";
+// import { CloudinaryStorage } from "multer-storage-cloudinary";
+// import cloudinary from "../config/cloudinary.js";
+
+// const storage = new CloudinaryStorage(
+//     {
+//         cloudinary: cloudinary,
+//         params: {
+//             folder: "taskmanager/avatars",
+//             allowed_formats: ["jpg", "jpeg", "png", "webp"],
+//             transformation: [{ width: 300, height: 300, crop: "fill" }]
+//         }
+//     });
+
+// const uploadAvatar = multer({
+//     storage: storage,
+//     limits: {
+//         fileSize: 2 * 1024 * 1024
+//     }
+// });
+
+// export default uploadAvatar;
+
 import multer from "multer";
 import { CloudinaryStorage } from "multer-storage-cloudinary";
 import cloudinary from "../config/cloudinary.js";
@@ -49,10 +72,13 @@ import cloudinary from "../config/cloudinary.js";
 const storage = new CloudinaryStorage(
     {
         cloudinary: cloudinary,
-        params: {
-            folder: "taskmanager/avatars",
-            allowed_formats: ["jpg", "jpeg", "png", "webp"],
-            transformation: [{ width: 300, height: 300, crop: "fill" }]
+        params: (req, file) => {
+            return {
+                folder: "taskmanager/avatars",
+                allowed_formats: ["jpg", "jpeg", "png", "webp"],
+                transformation: [{ width: 300, height: 300, crop: "fill" }],
+                public_id: `user_${req.userId}`
+            };
         }
     });
 
