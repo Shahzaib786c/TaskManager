@@ -111,7 +111,8 @@ export async function updateAvatar(req, res) {
             user: { id: user._id, name: user.name, email: user.email, avatar: user.avatar }
         });
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        console.error("Avatar upload error:", error);
+        res.status(500).json({ message: error.message || "Avatar upload failed" });
     }
 }
 export async function updateProfile(req, res) {
