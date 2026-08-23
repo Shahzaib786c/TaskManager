@@ -7,7 +7,7 @@ import {
     deleteTask,
     updateTaskStatus
 } from "../controllers/taskController.js";
-import verifyToken from "../middleware/verifytoken.js";
+import verifyToken from "../middleware/verifyToken.js";
 const router = express.Router();
 
 router.post("/", verifyToken, createTask);
