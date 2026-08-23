@@ -1,42 +1,66 @@
+// import multer from "multer";
+// import path from "path";
+
+// const storage = multer.diskStorage(
+//     {
+//         destination: "uploads/avatars/",
+//         filename: (req, file, cb) => {
+//             const uniqueName = Date.now() + "-" + file.originalname;
+//             cb(null, uniqueName);
+//         }
+//     });
+
+// const fileFilter = (req, file, cb) => {
+//     const extension = path.extname(file.originalname).toLowerCase();
+
+//     const allowedExtensions =
+//         [
+//             ".jpg",
+//             ".jpeg",
+//             ".png",
+//             ".webp"
+//         ];
+
+//     if (file.mimetype.startsWith("image/") &&
+//         allowedExtensions.includes(extension)) {
+//         cb(null, true);
+//     } else {
+//         cb(new Error("Only image files are allowed"));
+//     }
+// };
+
+// const uploadAvatar = multer(
+//     {
+//         storage: storage,
+//         fileFilter: fileFilter,
+//         limits:
+//         {
+//             fileSize: 2 * 1024 * 1024
+//         }
+//     });
+
+// export default uploadAvatar;
+
+
 import multer from "multer";
-import path from "path";
+import { CloudinaryStorage } from "multer-storage-cloudinary";
+import cloudinary from "../config/cloudinary.js";
 
-const storage = multer.diskStorage(
+const storage = new CloudinaryStorage(
     {
-        destination: "uploads/avatars/",
-        filename: (req, file, cb) => {
-            const uniqueName = Date.now() + "-" + file.originalname;
-            cb(null, uniqueName);
+        cloudinary: cloudinary,
+        params: {
+            folder: "taskmanager/avatars",
+            allowed_formats: ["jpg", "jpeg", "png", "webp"],
+            transformation: [{ width: 300, height: 300, crop: "fill" }]
         }
     });
 
-const fileFilter = (req, file, cb) => {
-    const extension = path.extname(file.originalname).toLowerCase();
-
-    const allowedExtensions =
-        [
-            ".jpg",
-            ".jpeg",
-            ".png",
-            ".webp"
-        ];
-
-    if (file.mimetype.startsWith("image/") &&
-        allowedExtensions.includes(extension)) {
-        cb(null, true);
-    } else {
-        cb(new Error("Only image files are allowed"));
+const uploadAvatar = multer({
+    storage: storage,
+    limits: {
+        fileSize: 2 * 1024 * 1024
     }
-};
-
-const uploadAvatar = multer(
-    {
-        storage: storage,
-        fileFilter: fileFilter,
-        limits:
-        {
-            fileSize: 2 * 1024 * 1024
-        }
-    });
+});
 
 export default uploadAvatar;

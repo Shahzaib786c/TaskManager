@@ -114,7 +114,6 @@ export async function updateAvatar(req, res) {
         res.status(500).json({ message: error.message });
     }
 }
-
 export async function updateProfile(req, res) {
     try {
         const { name, email } = req.body;
