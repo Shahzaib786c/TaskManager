@@ -21,7 +21,7 @@ export default function Sidebar({ isOpen, onClose }) {
       {isOpen && <div className="sidebar-overlay" onClick={onClose}></div>}
 
       <aside className={`sidebar ${isOpen ? "sidebar-open" : ""}`}>
-        <div className="sidebar-logo">TaskFlow</div>
+        <div className="sidebar-logo">TaskManager</div>
 
         <div className="sidebar-user">
           <div className="sidebar-user-avatar">
